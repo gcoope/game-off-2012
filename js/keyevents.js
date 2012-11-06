@@ -21,7 +21,7 @@ var keyEvents = function()
 				hero.y -= hero.ySpeed;
 		}
 		if (40 in keysDown) { // Down
-				// do nothing
+			// do nothing
 		}
 		if (37 in keysDown || 65 in keysDown) { // Left
 				hero.x -= hero.xSpeed;
@@ -57,11 +57,12 @@ var keyEvents = function()
 			console.log("Restarted");
 		}
 	}
-	
+	/////////////////////////////////
 	if(54 in keysDown && 57 in keysDown){
 		if(!playing && !crashed){
 		easter = true;
 		ctx.drawImage(eImage, 100, -20);
+		score = 69;
 		}
 	} else{easter = false;}
 }

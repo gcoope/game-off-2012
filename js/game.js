@@ -18,6 +18,7 @@ function init()
 	document.body.appendChild(canvas);
 	initPlayer();
 	initClouds();
+	initRabbits();
 	console.log("Game loaded correctly");
 	drawAllOnce();
 }
@@ -31,16 +32,19 @@ function update()
 	if(playing){
 		clear();	
 		updatePlayer();
-		moveClouds();		
+		moveClouds();
+		moveRabbits();			
 		draw();
+		moveForks();
+		fbCollisions();
 	}
 }
 
 function draw()
 {	
-	drawStuckForks();
 	drawGround();
-	drawClouds();
-	drawPlayer();
-	moveForks();	
+	drawClouds();	
+	drawRabbits();
+	drawPlayer();	
+	playerScoring();		
 }

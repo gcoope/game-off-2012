@@ -1,3 +1,5 @@
+var fallSpeed = 2;
+
 function initPlayer()
 {
 hero.x = 50;
@@ -38,19 +40,19 @@ var edgeColls = function()
 		hero.y = 6;
 	}
 
-	// Makes glider loop around screen
-	if (hero.x < -48)
+	// Keeps player in canvas on x-axis
+	if(hero.x < 0)
 	{
-		hero.x = canvas.width + 50; 
+		hero.x = 1;
 	}
-	if (hero.x > (canvas.width + 50))
+	if(hero.x > canvas.width - 48)
 	{
-		hero.x = - 51;
+		hero.x = canvas.width - 49;
 	}
 }
 
  
-var playerMovement = function()
+function playerMovement()
 {
 	if(!crashed){
 		if(rightFacing){
@@ -62,13 +64,14 @@ var playerMovement = function()
 			heroImage.src = "images/ninja_left.png";
 		}
 	}
-	if(hero.y < canvas.height-66){
-		hero.y += 2;
+	if(hero.y < canvas.height-56){
+		hero.y += fallSpeed;
 	}	
 	else{
 		if(!crashed){
 			if(rightFacing){heroImage.src = "images/splat.png";}
 			else if(!rightFacing){heroImage.src = "images/splatl.png";}		
+			score -= 1;
 			console.log("You crashed!");
 			crashed = true;
 			window.setTimeout(pausingStuff, 30); // See function below
@@ -80,4 +83,16 @@ var playerMovement = function()
 function pausingStuff()
 {
 	playing = false;
+}
+
+function playerScoring()
+{
+	// Start scoring text
+	if(playing && started){
+		ctx.fillStyle = "rgb(0,0,0)";
+		ctx.font = "24px Helvetica";
+		ctx.fillText("Score: ", 50, 10);
+		ctx.fillText(score, 100, 11);
+	}
+	// End scoring
 }
