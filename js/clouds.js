@@ -1,20 +1,16 @@
 // Clouds array
 var clouds = [];
-
-// Cloud image
-var clReady = false;
-var clImage = new Image();
-clImage.onload = function () {
-clReady = true;
-};
-clImage.src = "images/cloud1.png";
-
+var cloudWidth = 128, 
+	cloudHeight = 64,
+    cloudCropX = 0,
+	cloudCropY = 33,
+	cloudCount = 8;
 
 function objCloud()
 {
 	this.y = (Math.random() * 100);
 	this.x = (Math.random() * canvas.width - 200) + 30;
-	this.speed = ((Math.random() * 1.5) + 1); // Random speed
+	this.speed = ((Math.random() * 1.2) + 0.4); // Random speed
 }
 
 function newCloud()
@@ -51,13 +47,11 @@ function drawClouds()
 {
 	for(var i = 0; i < clouds.length; i++)
 	{	
-		ctx.beginPath();
-		ctx.drawImage(clImage, clouds[i].x, clouds[i].y);
-		ctx.closePath();
+		ctx.drawImage(spriteImg, cloudCropX, cloudCropY, cloudWidth, cloudHeight, clouds[i].x, clouds[i].y, cloudWidth, cloudHeight);
 	}	
 }
 
 function initClouds()
 {
-	for(var i = 0; i < 7; i++){newCloud();} // spawns 8 clouds
+	for(var i = 0; i <= cloudCount; i++){newCloud();} // spawns 8 clouds
 }

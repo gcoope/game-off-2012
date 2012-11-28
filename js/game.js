@@ -1,8 +1,9 @@
 var canvas, ctx;
 
-try{
-init();
-update();
+try
+{
+	init();
+	update();
 }
 catch(err){
 	console.log(err);
@@ -16,11 +17,9 @@ function init()
 	canvas.height = 400;	
 	ctx = canvas.getContext("2d");
 	document.body.appendChild(canvas);
-	initPlayer();
 	initClouds();
 	initRabbits();
 	console.log("Game loaded correctly");
-	drawAllOnce();
 }
 
 function update()
@@ -33,18 +32,20 @@ function update()
 		clear();	
 		updatePlayer();
 		moveClouds();
-		moveRabbits();			
-		draw();
-		moveForks();
 		fbCollisions();
+		moveRabbits();	
+		moveForks();
+		checkWin();
+		draw();		
 	}
 }
 
 function draw()
 {	
 	drawGround();
-	drawClouds();	
-	drawRabbits();
+	drawClouds();
+	drawForks();
+	drawRabbits();	
 	drawPlayer();	
 	playerScoring();		
 }
