@@ -14,7 +14,7 @@ I decided to go with forks. Because...forks.
 
 I'm simply going to create a game where you're a hand gliding ninja who's dropping forks onto unsuspecting rabbits. This is my very first game ever using HTML5 canvas so I don't expect it to be very good, I do however expect to learn a lot from it. 
 
-<img src="http://i.imgur.com/FNKSp.png" style="border:0;">
+<img src="http://i.imgur.com/8Vnz0.png" style="border:0;">
 
 # Instructions
 
